@@ -11,6 +11,7 @@ document.querySelector("button#restart").addEventListener("click", () => {
   window.location = "";
 });
 function handleFileSelect(evt) {
+  console.log(evt.target.files);
   const selectedFile = evt.target.files[0];
   if (selectedFile) {
     const reader = new FileReader();

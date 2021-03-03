@@ -21,7 +21,7 @@ body {
   padding-top: 3rem;
   max-width: 700px;
   margin: auto;
-  background: var(--color-grey-lightest);
+  background: var(--color-grey-lighter);
 }
 textarea {
   width: 100%;
@@ -35,12 +35,12 @@ body[data-step="1"] button {
 }
 label {
   font-weight: bold;
-  color: var(--color-indigo-light);
+  color: var(--color-grey-darkest);
   border-radius: 8px;
   background: var(--color-white);
-  border: 0.1px solid #ccc;
+  border: 0.1px solid var(--color-grey-base);
   padding: 3rem;
-  box-shadow: 10px 10px 5px -4px rgba(0, 0, 0, 0.51);
+  box-shadow: 10px 10px 5px -4px var(--color-grey-dark);
   margin-bottom: 2rem;
 }
 label > *:first-child {
@@ -52,6 +52,19 @@ textarea {
 }
 label * {
   color: black;
+}
+button {
+  all: unset;
+  padding: 1rem;
+  background: var(--color-white);
+  border-radius: 8px;
+  color: var(--color-grey-darker);
+  border: 2px solid var(--color-white);
+}
+button:hover {
+  transition: 1s all;
+  border: 2px solid var(--color-grey-darker);
+  cursor: pointer;
 }
 body[data-step="1"] label:first-child {
   display: block;
