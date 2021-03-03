@@ -1,13 +1,73 @@
 //all students from the spreadsheet
+
 let allStudents = [];
-//unique list of people who attended during the day
 let attendees = [];
 
+//unique list of people who attended during the day
+
+const copyTextareaToClipboard = (el) => {
+  el.select();
+  document.execCommand("copy");
+  console.log(`copied ${el.value} to clipboard`);
+};
+const observer = (function () {
+  "use strict";
+  const events = {};
+  return {
+    subscribe: function (ev, callback) {
+      if (!events.hasOwnProperty(ev)) {
+        events[ev] = [];
+      }
+      events[ev].push(callback);
+    },
+    publish: function (ev) {
+      console.log("Broadcasting: ", ev);
+      let data = Array.prototype.slice.call(arguments, 1);
+      let index = 0;
+      let length = 0;
+      if (events.hasOwnProperty(ev)) {
+        length = events[ev].length;
+        for (; index < length; index++) {
+          events[ev][index].apply(this, data);
+        }
+      }
+    },
+    unsubscribe: function (ev, callback) {
+      let x = events[ev].indexOf(callback);
+      events[ev].splice(x, 1);
+    },
+  };
+})();
+
+observer.subscribe("step", (args) => {
+  console.log(typeof step2);
+  if (args === 1 && typeof step1 === "function") {
+    step1();
+  }
+  if (args === 2 && typeof step2 === "function") {
+    step2();
+  }
+  if (args === 3 && typeof step3 === "function") {
+    step3();
+  }
+  console.log({ step: args, allStudents, attendees });
+});
+observer.publish("step", 1);
+function back() {
+  const nextNum = Number(document.body.dataset.step) - 1;
+  document.body.dataset.step = nextNum;
+  observer.publish("step", nextNum);
+}
+function next() {
+  const nextNum = Number(document.body.dataset.step) + 1;
+  document.body.dataset.step = nextNum;
+  observer.publish("step", nextNum);
+}
 document.querySelector("button#back").addEventListener("click", () => {
-  document.body.dataset.step = Number(document.body.dataset.step) - 1;
+  back();
 });
 document.querySelector("button#next").addEventListener("click", () => {
-  document.body.dataset.step = Number(document.body.dataset.step) + 1;
+  next();
 });
 document.querySelector("button#restart").addEventListener("click", () => {
   window.location = "";
@@ -28,15 +88,15 @@ function handleFileSelect(evt) {
           parsed.add(parts[0]);
         }
       }
-
       attendees = [...parsed].sort();
-      document.body.dataset.step = "2";
+      next();
     }
     reader.readAsText(selectedFile);
   }
 }
 
-function setOutput() {
+function step3() {
+  console.log("step 3");
   if (allStudents.length && attendees.length) {
     const outputArray = allStudents.map((student) => {
       return attendees.includes(student) ? `X` : ``;
@@ -47,12 +107,19 @@ function setOutput() {
     );
   }
 }
-document.querySelector("#studentsFromExcel").addEventListener("input", (e) => {
-  const asArray = e.target.value.split("\n");
+function step2() {
+  console.log("step 2");
+  const asArray = document
+    .querySelector("#studentsFromExcel")
+    .value.split("\n");
   allStudents = asArray.map((stud) => stud.replace("\t", " "));
-  setOutput();
+}
+document.querySelector("#studentsFromExcel").addEventListener("input", (e) => {
+  step2();
 });
-
+document.querySelector("#output").addEventListener("click", (e) => {
+  copyTextareaToClipboard(document.querySelector("#output"));
+});
 document
   .querySelector("#upload")
   .addEventListener("change", handleFileSelect, false);

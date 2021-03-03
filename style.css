@@ -76,6 +76,7 @@ button:hover {
 }
 #studentCheck {
   font-weight: 100;
+  border: none;
 }
 .textgrid > *:first-child {
   width: 70%;
