@@ -40,28 +40,21 @@ const observer = (function () {
 })();
 
 observer.subscribe("step", (args) => {
-  console.log(typeof step2);
-  if (args === 1 && typeof step1 === "function") {
-    step1();
-  }
-  if (args === 2 && typeof step2 === "function") {
-    step2();
-  }
-  if (args === 3 && typeof step3 === "function") {
-    step3();
+  if (typeof window[`step${args}`] === "function") {
+    window[`step${args}`]();
   }
   console.log({ step: args, allStudents, attendees });
 });
 observer.publish("step", 1);
-function back() {
-  const nextNum = Number(document.body.dataset.step) - 1;
+function setStep(nextNum) {
   document.body.dataset.step = nextNum;
   observer.publish("step", nextNum);
 }
+function back() {
+  setStep(Number(document.body.dataset.step) - 1);
+}
 function next() {
-  const nextNum = Number(document.body.dataset.step) + 1;
-  document.body.dataset.step = nextNum;
-  observer.publish("step", nextNum);
+  setStep(Number(document.body.dataset.step) + 1);
 }
 document.querySelector("button#back").addEventListener("click", () => {
   back();
