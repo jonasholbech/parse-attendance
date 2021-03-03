@@ -68,6 +68,12 @@ button:hover {
   border: 2px solid var(--color-grey-darker);
   cursor: pointer;
 }
+.textgrid {
+  display: flex;
+}
+.textgrid > * {
+  width: 40%;
+}
 body[data-step="1"] label:first-child {
   display: block;
 }

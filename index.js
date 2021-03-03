@@ -39,11 +39,14 @@ function setOutput() {
       return attendees.includes(student) ? `X` : ``;
     });
     document.querySelector("#output").value = outputArray.join("\n");
+    document.querySelector("#studentCheck").innerHTML = allStudents.join("\n");
+    console.log(allStudents);
   }
 }
 document.querySelector("#studentsFromExcel").addEventListener("input", (e) => {
   const asArray = e.target.value.split("\n");
   allStudents = asArray.map((stud) => stud.replace("\t", " "));
+
   setOutput();
 });
 
