@@ -52,6 +52,9 @@ input,
 textarea {
   display: block;
 }
+textarea {
+  min-height: 300px;
+}
 label * {
   color: black;
 }
@@ -73,11 +76,13 @@ button:hover {
 .textgrid {
   display: flex;
   gap: 1rem;
+  align-items: stretch;
 }
 #studentCheck {
   font-weight: 100;
   border: none;
 }
+
 .textgrid > *:first-child {
   width: 70%;
   overflow: scroll;

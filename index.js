@@ -110,7 +110,7 @@ function step2() {
 document.querySelector("#studentsFromExcel").addEventListener("input", (e) => {
   step2();
 });
-document.querySelector("#output").addEventListener("click", (e) => {
+document.querySelector("#output").addEventListener("focus", (e) => {
   copyTextareaToClipboard(document.querySelector("#output"));
 });
 document
