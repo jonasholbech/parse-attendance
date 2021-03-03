@@ -1,0 +1,67 @@
+:root {
+  --color-white: #ffffff;
+  --color-black: #22292f;
+  --color-grey-lightest: #f8fafc;
+  --color-grey-lighter: #f1f5f8;
+  --color-grey-light: #dae1e7;
+  --color-grey-base: #b8c2cc;
+  --color-grey-dark: #8795a1;
+  --color-grey-darker: #606f7b;
+  --color-grey-darkest: #3d4852;
+
+  --color-indigo-lightest: #e6e8ff;
+  --color-indigo-lighter: #b2b7ff;
+  --color-indigo-light: #7886d7;
+  --color-indigo-base: #6574cd;
+  --color-indigo-dark: #5661b3;
+  --color-indigo-darker: #2f365f;
+  --color-indigo-darkest: #191e38;
+}
+body {
+  padding-top: 3rem;
+  max-width: 700px;
+  margin: auto;
+  background: var(--color-grey-lightest);
+}
+textarea {
+  width: 100%;
+}
+#studentsFromExcel {
+  height: 300px;
+}
+body label,
+body[data-step="1"] button {
+  display: none;
+}
+label {
+  font-weight: bold;
+  color: var(--color-indigo-light);
+  border-radius: 8px;
+  background: var(--color-white);
+  border: 0.1px solid #ccc;
+  padding: 3rem;
+  box-shadow: 10px 10px 5px -4px rgba(0, 0, 0, 0.51);
+  margin-bottom: 2rem;
+}
+label > *:first-child {
+  margin-top: 1rem;
+}
+input,
+textarea {
+  display: block;
+}
+label * {
+  color: black;
+}
+body[data-step="1"] label:first-child {
+  display: block;
+}
+body[data-step="2"] label:nth-child(2) {
+  display: block;
+}
+body[data-step="3"] label:nth-child(3) {
+  display: block;
+}
+body[data-step="3"] #next {
+  display: none;
+}

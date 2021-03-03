@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-step="1">
+    <form enctype="multipart/form-data">
+      <label data-step="1">
+        1. Choose the .csv file
+        <input id="upload" type="file" name="files[]" size="30" />
+      </label>
+    </form>
+    <label data-step="2">
+      2. Paste the list of students
+      <textarea id="studentsFromExcel" rows="35"></textarea>
+    </label>
+    <label data-step="3">
+      3. Paste this back in the spreadsheet
+      <textarea id="output" readonly rows="35" cols="120"></textarea>
+    </label>
+    <button id="back">Back</button>
+    <button id="next">Next</button>
+    <button id="restart">Start Over</button>
+    <script src="index.js"></script>
+  </body>
+</html>
