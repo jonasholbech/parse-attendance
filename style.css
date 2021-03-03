@@ -75,11 +75,15 @@ button:hover {
   gap: 1rem;
 }
 #studentCheck {
-  all: unset;
   font-weight: 100;
 }
-.textgrid > * {
-  width: 40%;
+.textgrid > *:first-child {
+  width: 70%;
+  overflow: scroll;
+}
+.textgrid > *:last-child {
+  width: 20%;
+  overflow: scroll;
 }
 
 body[data-step="1"] label:first-child {
