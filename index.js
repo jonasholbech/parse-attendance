@@ -39,8 +39,7 @@ function setOutput() {
       return attendees.includes(student) ? `X` : ``;
     });
     document.querySelector("#output").value = outputArray.join("\n");
-    document.querySelector("#studentCheck").innerHTML = allStudents.join("\n");
-    console.log(allStudents);
+    document.querySelector("#studentCheck").value = allStudents.join("\n");
   }
 }
 document.querySelector("#studentsFromExcel").addEventListener("input", (e) => {

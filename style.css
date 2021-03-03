@@ -62,18 +62,26 @@ button {
   border-radius: 8px;
   color: var(--color-grey-darker);
   border: 2px solid var(--color-white);
+  box-shadow: 2px 2px 5px -4px var(--color-grey-dark);
 }
 button:hover {
   transition: 1s all;
+  color: var(--color-grey-dark);
   border: 2px solid var(--color-grey-darker);
   cursor: pointer;
 }
 .textgrid {
   display: flex;
+  gap: 1rem;
+}
+#studentCheck {
+  all: unset;
+  font-weight: 100;
 }
 .textgrid > * {
   width: 40%;
 }
+
 body[data-step="1"] label:first-child {
   display: block;
 }
