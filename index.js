@@ -1,14 +1,13 @@
 //all students from the spreadsheet
-
 let allStudents = [];
-let attendees = [];
-
 //unique list of people who attended during the day
+let attendees = [];
+let colSeparator = "\t"; //";"
 
 const copyTextareaToClipboard = (el) => {
   el.select();
   document.execCommand("copy");
-  console.log(`copied ${el.value} to clipboard`);
+  //console.log(`copied ${el.value} to clipboard`);
 };
 const observer = (function () {
   "use strict";
@@ -75,13 +74,19 @@ function handleFileSelect(evt) {
       const raw = theFile.target.result;
       const asArray = raw.split("\n");
       const parsed = new Set();
+      console.log({ asArray });
       for (let i = 0; i < asArray.length; i++) {
-        const parts = asArray[i].split("\t");
-        if (parts[1] === "Joined" || parts[1] === "Joined before") {
+        const parts = asArray[i].split(colSeparator);
+        if (
+          parts[1] === "Joined" ||
+          parts[1] === "Joined before" ||
+          parts[1] === "Medlem siden"
+        ) {
           parsed.add(parts[0]);
         }
       }
       attendees = [...parsed].sort();
+      console.log({ attendees });
       next();
     }
     reader.readAsText(selectedFile);
